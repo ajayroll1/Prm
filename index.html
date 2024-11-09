@@ -17,6 +17,7 @@
     .options {
         display: flex;
         gap: 20px;
+        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
         margin-bottom: 20px;
     }
 
@@ -26,9 +27,10 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         font-size: 1rem;
+        min-width: 150px; /* Minimum width to fit dropdown content */
     }
 
-    /* Adjusted layout for the button to be next to the fuel select */
+    /* Adjust layout for the button to be next to the fuel select */
     .button-container {
         display: flex;
         gap: 10px;
@@ -55,6 +57,7 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+        flex-wrap: wrap; /* Wrap content on smaller screens */
     }
 
     .battery-info-left {
@@ -85,6 +88,48 @@
         margin-top: 10px;
         font-weight: bold;
         color: #4CAF50;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .options {
+            flex-direction: column; /* Stack dropdowns and button vertically */
+        }
+
+        .button-container {
+            width: 100%; /* Full width for the button */
+            justify-content: center;
+        }
+
+        .battery-info {
+            flex-direction: column; /* Stack details section vertically */
+            align-items: center; /* Center align on smaller screens */
+            text-align: center;
+        }
+
+        .battery-info-left, .battery-info-right {
+            margin: 0; /* Remove side margins */
+            width: 100%; /* Full width */
+        }
+
+        .battery-info img {
+            width: 120px; /* Slightly smaller image on smaller screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .option-select {
+            font-size: 0.9rem; /* Adjust font size for smaller screens */
+        }
+
+        .find-button {
+            font-size: 0.9rem;
+            padding: 8px 16px; /* Adjust button size */
+        }
+
+        .battery-info img {
+            width: 100px; /* Further reduce image size */
+        }
     }
 </style>
 </head>
@@ -162,23 +207,23 @@
         const model = document.getElementById("modelSelect").value;
         const fuel = document.getElementById("fuelSelect").value;
 
-        // Check if all options are selected
-        if (vehicle && model && fuel) {
-            // Update the battery info with selected values
-            document.getElementById("selectedVehicle").textContent = vehicle;
-            document.getElementById("selectedModel").textContent = model;
-            document.getElementById("selectedFuel").textContent = fuel;
+        // Update the battery info with selected values or 'N/A' if not selected
+        const selectedVehicle = vehicle || 'N/A';
+        const selectedModel = model || 'N/A';
+        const selectedFuel = fuel || 'N/A';
 
-            // Dynamically update the vehicle name and image
-            document.getElementById("vehicleName").textContent = `Selected Vehicle: ${vehicle}`;
-            document.getElementById("vehicleImage").src = `https://via.placeholder.com/150?text=${vehicle.replace(/\s+/g, '+')}`;
+        // Update the HTML elements
+        document.getElementById("selectedVehicle").textContent = selectedVehicle;
+        document.getElementById("selectedModel").textContent = selectedModel;
+        document.getElementById("selectedFuel").textContent = selectedFuel;
 
-            // Display the battery information
-            const batteryInfo = document.getElementById("batteryInfo");
-            batteryInfo.style.display = "flex";  // Make it visible and use flex layout
-        } else {
-            alert("Please select all options (Vehicle, Model, and Fuel) to find the suitable battery.");
-        }
+        // Dynamically update the vehicle name and image
+        document.getElementById("vehicleName").textContent = `Selected Vehicle: ${selectedVehicle}`;
+        document.getElementById("vehicleImage").src = `https://via.placeholder.com/150?text=${selectedVehicle.replace(/\s+/g, '+')}`;
+
+        // Display the battery information
+        const batteryInfo = document.getElementById("batteryInfo");
+        batteryInfo.style.display = "flex";  // Make it visible and use flex layout
     }
 </script>
 
