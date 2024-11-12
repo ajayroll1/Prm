@@ -1,137 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Battery Selection</title>
-<style>
-    /* Basic styles for container, options, and details section */
-    .container {
-        width: 100%;
-        max-width: 1000px;
-        margin: 20px auto;
-        padding: 20px;
-        font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Selection</title>
+    <style>
+        /* Basic styles for container, options, and details section */
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
 
-    .options {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-        margin-bottom: 20px;
-    }
-
-    .option-select {
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 1rem;
-        min-width: 150px; /* Minimum width to fit dropdown content */
-    }
-
-    /* Adjust layout for the button to be next to the fuel select */
-    .button-container {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .find-button {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1rem;
-    }
-
-    .battery-info {
-        display: none;
-        margin-top: 20px;
-        padding: 15px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap; /* Wrap content on smaller screens */
-    }
-
-    .battery-info-left {
-        flex: 1;
-    }
-
-    .battery-info-right {
-        flex-shrink: 0;
-        margin-left: 20px;
-        text-align: center;
-    }
-
-    .battery-info h3 {
-        margin-top: 0;
-        color: #4CAF50;
-    }
-
-    .battery-info p {
-        margin: 8px 0;
-    }
-
-    .battery-info img {
-        width: 150px; /* Adjust image size as needed */
-        height: auto;
-    }
-
-    .vehicle-name {
-        margin-top: 10px;
-        font-weight: bold;
-        color: #4CAF50;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
         .options {
-            flex-direction: column; /* Stack dropdowns and button vertically */
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            margin-bottom: 20px;
         }
 
-        .button-container {
-            width: 100%; /* Full width for the button */
-            justify-content: center;
-        }
-
-        .battery-info {
-            flex-direction: column; /* Stack details section vertically */
-            align-items: center; /* Center align on smaller screens */
-            text-align: center;
-        }
-
-        .battery-info-left, .battery-info-right {
-            margin: 0; /* Remove side margins */
-            width: 100%; /* Full width */
-        }
-
-        .battery-info img {
-            width: 120px; /* Slightly smaller image on smaller screens */
-        }
-    }
-
-    @media (max-width: 480px) {
         .option-select {
-            font-size: 0.9rem; /* Adjust font size for smaller screens */
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-width: 150px; /* Minimum width to fit dropdown content */
+        }
+
+        /* Adjust layout for the button to be next to the fuel select */
+        .button-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
         .find-button {
-            font-size: 0.9rem;
-            padding: 8px 16px; /* Adjust button size */
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .battery-info {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap; /* Wrap content on smaller screens */
+        }
+
+        .battery-info-left {
+            flex: 1;
+        }
+
+        .battery-info-right {
+            flex-shrink: 0;
+            margin-left: 20px;
+            text-align: center;
+            width: 200px; /* Set fixed width for the image container */
+        }
+
+        .battery-info h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .battery-info p {
+            margin: 8px 0;
         }
 
         .battery-info img {
-            width: 100px; /* Further reduce image size */
+            width: 150px; /* Fixed width */
+            height: 150px; /* Fixed height */
+            object-fit: contain; /* Ensure image aspect ratio is maintained */
         }
-    }
-</style>
+
+        .vehicle-name {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .options {
+                flex-direction: column; /* Stack dropdowns and button vertically */
+            }
+
+            .button-container {
+                width: 100%; /* Full width for the button */
+                justify-content: center;
+            }
+
+            .battery-info {
+                flex-direction: column; /* Stack details section vertically */
+                align-items: center; /* Center align on smaller screens */
+                text-align: center;
+            }
+
+            .battery-info-left, .battery-info-right {
+                margin: 0; /* Remove side margins */
+                width: 100%; /* Full width */
+            }
+
+            .battery-info img {
+                width: 120px; /* Slightly smaller image on smaller screens */
+                height: 120px; /* Maintain square aspect ratio */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .option-select {
+                font-size: 0.9rem; /* Adjust font size for smaller screens */
+            }
+
+            .find-button {
+                font-size: 0.9rem;
+                padding: 8px 16px; /* Adjust button size */
+            }
+
+            .battery-info img {
+                width: 100px; /* Further reduce image size */
+                height: 100px; /* Maintain square aspect ratio */
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -150,12 +154,19 @@
         </select>
 
         <select class="option-select" id="modelSelect">
-            <option value="">Select Model</option>
+            <option value="">Select Battery Model</option>
             <option value="ES">ES</option>
             <option value="BS6">BS6</option>
             <option value="DLX">DLX</option>
             <option value="STD">STD</option>
             <option value="ABS">ABS</option>
+        </select>
+
+        <!-- New Select Dropdown for Gold or Platinum option -->
+        <select class="option-select" id="batterySelect">
+            <option value="">Select Type</option>
+            <option value="Gold">Gold</option>
+            <option value="Platinum">Platinum</option>
         </select>
 
         <select class="option-select" id="fuelSelect">
@@ -178,6 +189,7 @@
             <p><strong>Vehicle:</strong> <span id="selectedVehicle">N/A</span></p>
             <p><strong>Model:</strong> <span id="selectedModel">N/A</span></p>
             <p><strong>Fuel Type:</strong> <span id="selectedFuel">N/A</span></p>
+            <p><strong>Battery Type:</strong> <span id="selectedBattery">N/A</span></p> <!-- Display selected battery type -->
             <p><strong>Base Price:</strong> ₹1,712</p>
             <p><strong>Special Discount:</strong> ₹83</p>
             <p><strong>Total Price:</strong> ₹1,629</p>
@@ -201,27 +213,48 @@
 </div>
 
 <script>
+    
     function findBattery() {
         // Get selected options
         const vehicle = document.getElementById("vehicleSelect").value;
         const model = document.getElementById("modelSelect").value;
         const fuel = document.getElementById("fuelSelect").value;
+        const battery = document.getElementById("batterySelect").value;
 
         // Update the battery info with selected values or 'N/A' if not selected
         const selectedVehicle = vehicle || 'N/A';
         const selectedModel = model || 'N/A';
         const selectedFuel = fuel || 'N/A';
+        const selectedBattery = battery || 'N/A'; // For battery type
 
         // Update the HTML elements
         document.getElementById("selectedVehicle").textContent = selectedVehicle;
         document.getElementById("selectedModel").textContent = selectedModel;
         document.getElementById("selectedFuel").textContent = selectedFuel;
+        document.getElementById("selectedBattery").textContent = selectedBattery; // Update battery type
 
         // Dynamically update the vehicle name and image
         document.getElementById("vehicleName").textContent = `Selected Vehicle: ${selectedVehicle}`;
-        document.getElementById("vehicleImage").src = `https://via.placeholder.com/150?text=${selectedVehicle.replace(/\s+/g, '+')}`;
 
-        // Display the battery information
+        // Set the image source based on the selected vehicle
+        if (selectedVehicle === 'Hero Aava 125') {
+            document.getElementById("vehicleImage").src = 'https://amaron-prod-images.s3.ap-south-1.amazonaws.com/styles/product_detail_img_450x350/s3/product-topview-image/ABR-PR-APBTZ4L.jpg?itok=XIbNlF9d'; // Replace with actual image URL
+        } else if (selectedVehicle === 'Honda Shine') {
+            document.getElementById("vehicleImage").src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoW4WZ3moAQwOFgeZlsbOWmNvzO9P45bNT-g&s'; // Replace with actual image URL
+        } else if (selectedVehicle === 'TVS Apache') {
+            document.getElementById("vehicleImage").src = 'https://www.tatagreenbattery.com/wp-content/uploads/2021/01/YB14L-Battery.png'; // Replace with actual image URL
+        } else if (selectedVehicle === 'Bajaj Pulsar') {
+            document.getElementById("vehicleImage").src = 'https://amaron-prod-images.s3.ap-south-1.amazonaws.com/styles/product_detail_img_450x350/s3/product-topview-image/ABR-PR-APBTZ4L.jpg?itok=XIbNlF9d'; // Replace with actual image URL
+        } else if (selectedVehicle === 'Suzuki Access') {
+            document.getElementById("vehicleImage").src = 'https://www.tatagreenbattery.com/wp-content/uploads/2021/01/YB14L-Battery.png'; // Replace with actual image URL
+        } else {
+            document.getElementById("vehicleImage").src = 'https://via.placeholder.com/150'; // Placeholder image for unselected or unknown vehicles
+        }
+
+
+      
+
+        // Show the battery info section
         const batteryInfo = document.getElementById("batteryInfo");
         batteryInfo.style.display = "flex";  // Make it visible and use flex layout
     }
